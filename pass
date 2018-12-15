@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -u
+
+read -p    "Website         : " website
+read -p    "Username        : " username
+read -s -p "Master Password : " masterpass
+
+lesspass -c "$website" "$username" "$masterpass"
+
+unset -v website
+unset -v username
+unset -v masterpass

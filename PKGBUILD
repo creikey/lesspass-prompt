@@ -2,7 +2,7 @@ pkgname=lesspass-prompt
 pkgver=1.0
 pkgrel=1
 arch=('any')
-depends=('bash', 'xdotool', 'lpcli')
+depends=('bash'  'xdotool'  'lpcli')
 source=(lesspass-prompt)
 sha256sums=('f00f63f4106181357ae707cec01e9a243c162da4d4f265b0dad23368ddae5583')
 

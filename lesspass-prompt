@@ -1,13 +1,19 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -u
+TYPETIMEOUT=3
 
-read -p    "Website         : " website
-read -p    "Username        : " username
-read -s -p "Master Password : " masterpass
+read -p "Site: " SITE
+read -p "Login: " LOGIN
+printf "Password: "
+OUTPASSWD="$(lpcli "$SITE" "$LOGIN" --print | sed -n 3p)"
+while [[ ${TYPETIMEOUT} -gt 0 ]]; do
+	printf "$TYPETIMEOUT"
+	sleep 1
+	TYPETIMEOUT=$(($TYPETIMEOUT - 1))
+done
+printf "...Typing!\n"
+xdotool type "$OUTPASSWD"
 
-lesspass -c "$website" "$username" "$masterpass"
-
-unset -v website
-unset -v username
-unset -v masterpass
+unset OUTPASSWD
+unset SITE
+unset LOGIN
